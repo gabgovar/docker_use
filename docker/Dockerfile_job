@@ -1,7 +1,10 @@
 FROM python:3.8-slim
 
-RUN pip3 install pandas
+RUN pip install pandas
 
 COPY run.py /run.py
+COPY entrypoint.sh /entrypoint.sh
 
-CMD python3 /run.py
+RUN chmod +x /entrypoint.sh
+
+CMD /entrypoint.sh
